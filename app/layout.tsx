@@ -1,22 +1,22 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Caveat, Inter } from "next/font/google";
+import { Playfair_Display, Dancing_Script, Poppins } from "next/font/google";
 import "./globals.css";
 
-const cormorant = Cormorant_Garamond({
+const playfair = Playfair_Display({
   variable: "--font-serif",
   subsets: ["latin"],
-  weight: ["400", "500", "600"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-const caveat = Caveat({
+const dancing = Dancing_Script({
   variable: "--font-script",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
-const inter = Inter({
+const poppins = Poppins({
   variable: "--font-sans",
   subsets: ["latin"],
   weight: ["300", "400", "500", "600"],
@@ -49,7 +49,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className={`${cormorant.variable} ${caveat.variable} ${inter.variable}`}
+      className={`${playfair.variable} ${dancing.variable} ${poppins.variable}`}
     >
       <body>{children}</body>
     </html>

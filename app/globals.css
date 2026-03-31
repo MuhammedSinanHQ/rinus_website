@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 :root {
-  /* Premium romantic palette */
+  /* Premium Luxury Romantic Palette */
   --color-blush: #fdf2f4;
   --color-rose-50: #fff1f2;
   --color-rose-100: #ffe4e6;
@@ -10,14 +10,29 @@
   --color-rose-400: #fb7185;
   --color-rose-500: #f43f5e;
   --color-rose-600: #e11d48;
+  --color-rose-700: #be123c;
   --color-cream: #fffbf7;
+  
+  /* Premium Gold & Rose Gold */
   --color-gold: #d4a574;
   --color-gold-light: #f5e6d3;
+  --color-rose-gold: #e8c4b8;
+  --color-rose-gold-light: #f8ece8;
+  --color-champagne: #f7e7ce;
+  --color-pearl: #fefefa;
   
-  /* Shadows */
+  /* Luxurious Dark Accents */
+  --color-burgundy: #800020;
+  --color-wine: #722f37;
+  --color-mauve: #e0b0ff;
+  
+  /* Premium Shadows */
   --shadow-soft: 0 4px 20px rgba(244, 63, 94, 0.08);
   --shadow-medium: 0 8px 30px rgba(244, 63, 94, 0.12);
   --shadow-glow: 0 0 40px rgba(244, 63, 94, 0.15);
+  --shadow-gold: 0 0 30px rgba(212, 165, 116, 0.3);
+  --shadow-luxury: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
+  --shadow-glass: 0 8px 32px rgba(244, 63, 94, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
 }
 
 @theme inline {
@@ -28,6 +43,7 @@
 
 * {
   -webkit-tap-highlight-color: transparent;
+  box-sizing: border-box;
 }
 
 html {
@@ -38,13 +54,20 @@ html {
 
 body {
   font-family: var(--font-sans), system-ui, sans-serif;
-  background: linear-gradient(
-    180deg,
-    var(--color-blush) 0%,
-    var(--color-cream) 30%,
-    var(--color-rose-50) 60%,
-    var(--color-blush) 100%
-  );
+  background: 
+    radial-gradient(ellipse at 20% 0%, rgba(253, 164, 175, 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 20%, rgba(244, 63, 94, 0.08) 0%, transparent 40%),
+    radial-gradient(ellipse at 40% 80%, rgba(212, 165, 116, 0.1) 0%, transparent 50%),
+    radial-gradient(ellipse at 90% 90%, rgba(232, 196, 184, 0.12) 0%, transparent 40%),
+    linear-gradient(
+      180deg,
+      var(--color-pearl) 0%,
+      var(--color-blush) 15%,
+      var(--color-cream) 35%,
+      var(--color-rose-50) 55%,
+      var(--color-rose-gold-light) 75%,
+      var(--color-blush) 100%
+    );
   background-attachment: fixed;
   min-height: 100dvh;
   min-height: 100vh;
@@ -69,20 +92,20 @@ body {
 
 /* Custom scrollbar - subtle and elegant */
 ::-webkit-scrollbar {
-  width: 6px;
+  width: 4px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--color-rose-100);
+  background: linear-gradient(180deg, var(--color-rose-100), var(--color-rose-gold-light));
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--color-rose-300);
-  border-radius: 3px;
+  background: linear-gradient(180deg, var(--color-rose-400), var(--color-rose-gold));
+  border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-rose-400);
+  background: linear-gradient(180deg, var(--color-rose-500), var(--color-gold));
 }
 
 /* Selection styling */
@@ -91,43 +114,157 @@ body {
   color: var(--color-rose-600);
 }
 
-/* Heartbeat animation */
-@keyframes heartbeat {
-  0%, 100% { transform: scale(1); }
-  15% { transform: scale(1.15); }
-  30% { transform: scale(1); }
-  45% { transform: scale(1.1); }
-  60% { transform: scale(1); }
+/* Premium Glassmorphism */
+.glass-card {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 
+    0 8px 32px rgba(244, 63, 94, 0.08),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
 }
 
-/* Soft glow pulse */
+.glass-card-strong {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  box-shadow: 
+    0 25px 50px -12px rgba(0, 0, 0, 0.1),
+    0 8px 20px rgba(244, 63, 94, 0.06),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.6);
+}
+
+/* Premium Gold Shimmer */
+@keyframes gold-shimmer {
+  0% {
+    background-position: -200% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.gold-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--color-rose-400) 0%,
+    var(--color-gold) 25%,
+    var(--color-rose-gold) 50%,
+    var(--color-gold) 75%,
+    var(--color-rose-400) 100%
+  );
+  background-size: 200% auto;
+  animation: gold-shimmer 4s linear infinite;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Heartbeat animation - Enhanced */
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  10% { transform: scale(1.15); }
+  20% { transform: scale(1); }
+  30% { transform: scale(1.1); }
+  40% { transform: scale(1); }
+}
+
+/* Luxurious glow pulse */
 @keyframes glow-pulse {
   0%, 100% { 
-    box-shadow: 0 0 20px rgba(244, 63, 94, 0.2),
-                0 0 40px rgba(244, 63, 94, 0.1);
+    box-shadow: 
+      0 0 20px rgba(244, 63, 94, 0.25),
+      0 0 40px rgba(244, 63, 94, 0.15),
+      0 0 60px rgba(212, 165, 116, 0.1);
+    filter: brightness(1);
   }
   50% { 
-    box-shadow: 0 0 30px rgba(244, 63, 94, 0.3),
-                0 0 60px rgba(244, 63, 94, 0.15);
+    box-shadow: 
+      0 0 30px rgba(244, 63, 94, 0.35),
+      0 0 60px rgba(244, 63, 94, 0.2),
+      0 0 90px rgba(212, 165, 116, 0.15);
+    filter: brightness(1.05);
   }
 }
 
 /* Gentle float */
 @keyframes gentle-float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-8px); }
+  0%, 100% { transform: translateY(0) rotate(0deg); }
+  25% { transform: translateY(-6px) rotate(1deg); }
+  50% { transform: translateY(-10px) rotate(0deg); }
+  75% { transform: translateY(-6px) rotate(-1deg); }
+}
+
+/* Sparkle animation */
+@keyframes sparkle {
+  0%, 100% { 
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% { 
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+/* Fade in up animation */
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Premium button glow */
+@keyframes button-glow {
+  0%, 100% {
+    box-shadow: 
+      0 4px 15px rgba(244, 63, 94, 0.3),
+      0 0 30px rgba(244, 63, 94, 0.15);
+  }
+  50% {
+    box-shadow: 
+      0 6px 25px rgba(244, 63, 94, 0.4),
+      0 0 50px rgba(244, 63, 94, 0.2);
+  }
+}
+
+/* Ring pulse */
+@keyframes ring-pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2);
+    opacity: 0;
+  }
 }
 
 .animate-heartbeat {
-  animation: heartbeat 2s ease-in-out infinite;
+  animation: heartbeat 1.8s ease-in-out infinite;
 }
 
 .animate-glow-pulse {
-  animation: glow-pulse 3s ease-in-out infinite;
+  animation: glow-pulse 2.5s ease-in-out infinite;
 }
 
 .animate-gentle-float {
-  animation: gentle-float 4s ease-in-out infinite;
+  animation: gentle-float 5s ease-in-out infinite;
+}
+
+.animate-sparkle {
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+.animate-button-glow {
+  animation: button-glow 2s ease-in-out infinite;
 }
 
 /* Toast animation */
@@ -154,9 +291,128 @@ body {
 }
 
 .toast-enter {
-  animation: toast-in 0.3s ease-out forwards;
+  animation: toast-in 0.4s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
 }
 
 .toast-exit {
   animation: toast-out 0.3s ease-in forwards;
+}
+
+/* Premium decorative elements */
+.premium-border {
+  position: relative;
+}
+
+.premium-border::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: inherit;
+  background: linear-gradient(
+    135deg,
+    var(--color-rose-300),
+    var(--color-gold),
+    var(--color-rose-gold),
+    var(--color-rose-400)
+  );
+  z-index: -1;
+  opacity: 0.5;
+}
+
+/* Floating hearts container */
+.hearts-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  overflow: hidden;
+  z-index: 1;
+}
+
+/* Individual floating heart */
+@keyframes float-up {
+  0% {
+    transform: translateY(100vh) rotate(0deg) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(90vh) rotate(10deg) scale(1);
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) rotate(-10deg) scale(0.8);
+    opacity: 0;
+  }
+}
+
+@keyframes sway {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(15px);
+  }
+  75% {
+    transform: translateX(-15px);
+  }
+}
+
+/* Luxury text shadow */
+.text-shadow-luxury {
+  text-shadow: 
+    0 2px 10px rgba(244, 63, 94, 0.2),
+    0 4px 20px rgba(212, 165, 116, 0.15);
+}
+
+/* Mobile touch feedback */
+@media (hover: none) {
+  .touch-active:active {
+    transform: scale(0.97);
+    transition: transform 0.1s ease;
+  }
+}
+
+/* Premium focus styles */
+:focus-visible {
+  outline: 2px solid var(--color-rose-400);
+  outline-offset: 3px;
+}
+
+/* Shimmer loading effect */
+@keyframes shimmer-load {
+  0% {
+    background-position: -100% 0;
+  }
+  100% {
+    background-position: 100% 0;
+  }
+}
+
+.shimmer {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 0.5) 50%,
+    rgba(255, 255, 255, 0) 100%
+  );
+  background-size: 200% 100%;
+  animation: shimmer-load 1.5s infinite;
+}
+
+/* Canvas background for Three.js */
+.canvas-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.canvas-container canvas {
+  width: 100% !important;
+  height: 100% !important;
 }
